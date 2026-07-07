@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Agreement Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260527-1" />
+</head>
+<body class="loading">
+  <!-- ===== Home / landing view ===== -->
+  <section id="homeView">
+    <section class="home-hero">
+      <div class="home-brand-stack">
+        <span class="home-badge"><span class="home-badge-dot"></span> Ready-made templates · runs in your browser</span>
+        <div class="home-eyebrow">Agreement Studio</div>
+      </div>
+      <h1 class="home-title">Choose an <span class="grad">agreement</span> to begin</h1>
+      <p class="home-sub">Pick a template below — a fresh draft is created automatically. Your master templates stay untouched.</p>
+      <div class="home-search">
+        <div class="home-search-input" hidden>
+          <svg class="home-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input id="homeSearch" type="text" placeholder="Search agreements — किरायानामा, affidavit, partnership…" />
+          <kbd class="home-search-kbd">/</kbd>
+        </div>
+        <div class="home-filters" id="homeFilters"></div>
+      </div>
+    </section>
+
+    <section class="home-section" id="homeDraftsSection" hidden>
+      <div class="home-section-head">
+        <h2>Recent drafts</h2>
+        <span class="home-section-meta">Continue where you left off</span>
+      </div>
+      <div id="homeDrafts" class="home-drafts"></div>
+    </section>
+
+    <section class="home-section">
+      <div class="home-section-head">
+        <h2>All agreements</h2>
+        <span id="homeCount" class="home-section-meta"></span>
+      </div>
+      <div id="homeGrid" class="home-grid"></div>
+    </section>
+
+    <section class="home-steps" aria-hidden="true">
+      <div class="home-step"><span class="home-step-num">1</span><span class="home-step-text">Pick a template</span></div>
+      <span class="home-step-arrow">→</span>
+      <div class="home-step"><span class="home-step-num">2</span><span class="home-step-text">Type or dictate</span></div>
+      <span class="home-step-arrow">→</span>
+      <div class="home-step"><span class="home-step-num">3</span><span class="home-step-text">Print or export</span></div>
+    </section>
+  </section>
+
+  <aside id="sidebar">
+    <div class="brand" id="brandHome" title="Back to home">
+      <div>
+        <div class="brand-title">Agreement Studio</div>
+        <div class="brand-sub">Multi-format legal canvas</div>
+      </div>
+    </div>
+
+    <div class="side-section">
+      <div class="side-heading">
+        <span>Templates</span>
+        <button class="icon-btn" id="btnAddTemplate" title="Create new blank template">＋</button>
+      </div>
+      <ul id="templateList" class="side-list"></ul>
+    </div>
+
+    <div class="side-section grow">
+      <div class="side-heading">
+        <span>Drafts</span>
+        <button class="icon-btn" id="btnNewDraft" title="New draft from selected template">＋</button>
+      </div>
+      <ul id="draftList" class="side-list"></ul>
+    </div>
+  </aside>
+
+  <input type="file" id="fileImport" accept="application/json" hidden />
+  <div id="sidebarBackdrop" class="sidebar-backdrop" hidden></div>
+
+  <main id="main">
+    <header id="topbar">
+      <button id="btnSidebarToggle" class="sidebar-toggle" title="Menu" aria-label="Menu">☰</button>
+      <div class="title-block">
+        <div id="docTitle" class="doc-title" contenteditable="true" spellcheck="false">Untitled</div>
+        <div id="docMeta" class="doc-meta">—</div>
+      </div>
+      <div class="actions">
+        <button id="btnHome" class="btn" title="Back to home">⌂ Home</button>
+        <button id="btnSave" class="btn primary">Save</button>
+        <button id="btnExport" class="btn">Download PDF</button>
+        <button id="btnResetTemplate" class="btn danger-ghost" title="Restore this template to its default (drafts are unaffected)">Reset Template</button>
+        <button id="btnDelete" class="btn danger-ghost">Delete</button>
+      </div>
+    </header>
+
+    <div id="toolbar">
+      <div class="tool-group">
+        <button class="tool fmt" data-cmd="bold"      title="Bold (Ctrl+B)"><b>B</b></button>
+        <button class="tool fmt" data-cmd="italic"    title="Italic (Ctrl+I)"><i>I</i></button>
+        <button class="tool fmt" data-cmd="underline" title="Underline (Ctrl+U)"><u>U</u></button>
+      </div>
+      <div class="tool-group">
+        <select id="fontSize" class="tool font-size" title="Font size for selected text">
+          <option value="">Size</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="18">18</option>
+          <option value="20">20</option>
+          <option value="24">24</option>
+          <option value="30">30</option>
+          <option value="36">36</option>
+          <option value="48">48</option>
+        </select>
+        <button class="tool fmt" data-action="font-smaller" title="Shrink selection one step">A−</button>
+        <button class="tool fmt" data-action="font-bigger"  title="Grow selection one step">A+</button>
+      </div>
+      <div class="tool-group">
+        <button class="tool fmt" data-cmd="justifyLeft"   title="Align left">⫷</button>
+        <button class="tool fmt" data-cmd="justifyCenter" title="Center">≡</button>
+        <button class="tool fmt" data-cmd="justifyRight"  title="Align right">⫸</button>
+        <button class="tool fmt" data-cmd="justifyFull"   title="Justify">▤</button>
+      </div>
+      <div class="tool-group">
+        <button class="tool fmt" data-cmd="insertOrderedList"   title="Numbered list">1.</button>
+        <button class="tool fmt" data-cmd="insertUnorderedList" title="Bullet list">•</button>
+      </div>
+      <div class="tool-group">
+        <button class="tool" data-action="insert-2col"  title="Two-column row">▦ 2-col</button>
+        <button class="tool" data-action="page-break"   title="Insert page break at cursor">⊟ Page</button>
+        <button class="tool" data-action="delete-page"  title="Delete this page">✕ Page</button>
+      </div>
+      <div class="tool-group">
+        <select id="langSelect" title="Voice language">
+          <option value="hi-IN">हिन्दी (India)</option>
+          <option value="en-IN">English (India)</option>
+          <option value="en-US">English (US)</option>
+          <option value="mr-IN">मराठी</option>
+          <option value="gu-IN">ગુજરાતી</option>
+          <option value="bn-IN">বাংলা</option>
+          <option value="ta-IN">தமிழ்</option>
+          <option value="te-IN">తెలుగు</option>
+          <option value="pa-IN">ਪੰਜਾਬੀ</option>
+        </select>
+        <button id="btnVoice" class="tool voice" title="Hold or click to dictate at cursor">
+          <span class="mic-dot"></span> Voice
+        </button>
+      </div>
+      <div class="tool-group right">
+        <span id="autosaveStatus" class="status">saved</span>
+      </div>
+    </div>
+
+    <section id="canvasWrap">
+      <div id="paper" class="paper-stack"></div>
+    </section>
+  </main>
+
+  <!-- modals -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3 id="modalTitle">Title</h3>
+        <button class="icon-btn" data-modal-close>✕</button>
+      </div>
+      <div id="modalBody" class="modal-body"></div>
+      <div class="modal-foot">
+        <button class="btn" data-modal-close>Cancel</button>
+        <button class="btn primary" id="modalConfirm">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="vendor/html2canvas.min.js"></script>
+  <script src="vendor/jspdf.umd.min.js"></script>
+  <script src="builtins.js?v=20260527-1"></script>
+  <script src="app.js?v=20260527-1"></script>
+</body>
+</html>

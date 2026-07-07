@@ -1,0 +1,10 @@
+  {
+    "templates": [
+      "rent-agreement-hindi.json",
+      "affidavit-hindi.json",
+      "sale-agreement-hindi.json",
+      "partnership-deed-hindi.json",
+      "power-of-attorney-hindi.json",
+      "promissory-note-hindi.json"
+    ]
+  }

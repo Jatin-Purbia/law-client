@@ -1,0 +1,33 @@
+{
+  "id": "affidavit-hindi",
+  "name": "हलफनामा (Affidavit)",
+  "language": "hi-IN",
+  "description": "सामान्य शपथ-पत्र प्रारूप / General sworn affidavit template",
+  "category": "Court",
+  "icon": "⚖️",
+  "builtin": true,
+  "blocks": [
+    { "id": "a1",  "type": "block",    "align": "center",  "style": "small",   "text": "॥ श्री ॥" },
+    { "id": "a2",  "type": "block",    "align": "center",  "style": "title",   "text": "हलफनामा" },
+    { "id": "a3",  "type": "spacer",   "size": "md" },
+    { "id": "a4",  "type": "block",    "align": "justify", "style": "normal",  "text": "मैं, __________ पुत्र/पुत्री/पत्नी श्री __________, आयु ____ वर्ष, जाति __________, निवासी— ______________________________, (राज.) पिन— ________, धर्मानुसार/सत्यनिष्ठा से शपथपूर्वक बयान करता/करती हूँ कि:—" },
+    { "id": "a5",  "type": "spacer",   "size": "sm" },
+    { "id": "a6",  "type": "numbered", "number": "1.", "text": "यह कि मैं भारत का/की नागरिक हूँ तथा उपरोक्त पते का/की स्थायी निवासी हूँ।" },
+    { "id": "a7",  "type": "numbered", "number": "2.", "text": "यह कि मेरा जन्म दिनांक __________ है तथा मेरे आधार कार्ड क्रमांक __________ है।" },
+    { "id": "a8",  "type": "numbered", "number": "3.", "text": "यह कि ______________________________________________________________" },
+    { "id": "a8b", "type": "block",    "align": "left",    "style": "normal",  "text": "____________________________________________________________________________" },
+    { "id": "a8c", "type": "block",    "align": "left",    "style": "normal",  "text": "____________________________________________________________________________" },
+    { "id": "a8d", "type": "block",    "align": "left",    "style": "normal",  "text": "_________________________________________________________________________ ।" },
+    { "id": "a9",  "type": "numbered", "number": "4.", "text": "यह कि उपरोक्त सम्पूर्ण कथन मेरे व्यक्तिगत ज्ञान एवं विश्वास के अनुसार सत्य एवं सही हैं तथा इसमें कुछ भी छुपाया नहीं गया है।" },
+    { "id": "a10", "type": "spacer",   "size": "lg" },
+    { "id": "a11", "type": "block",    "align": "right",   "style": "normal",  "text": "हस्ताक्षर शपथकर्ता" },
+    { "id": "a12", "type": "spacer",   "size": "md" },
+    { "id": "a13", "type": "block",    "align": "left",    "style": "normal",  "text": "स्थान:— __________" },
+    { "id": "a14", "type": "block",    "align": "left",    "style": "normal",  "text": "दिनांक:— __________" },
+    { "id": "a15", "type": "spacer",   "size": "md" },
+    { "id": "a16", "type": "block",    "align": "center",  "style": "heading", "text": "सत्यापन" },
+    { "id": "a17", "type": "block",    "align": "justify", "style": "normal",  "text": "मैं उपरोक्त शपथकर्ता शपथपूर्वक सत्यापित करता/करती हूँ कि उपरोक्त पैरा 1 से ____ तक के समस्त कथन मेरे व्यक्तिगत ज्ञान के अनुसार सत्य व सही हैं तथा इसमें कुछ भी असत्य नहीं है, न ही कुछ छुपाया गया है।" },
+    { "id": "a18", "type": "spacer",   "size": "lg" },
+    { "id": "a19", "type": "block",    "align": "right",   "style": "normal",  "text": "हस्ताक्षर शपथकर्ता" }
+  ]
+}
