@@ -1276,6 +1276,11 @@ export default function Studio({
       target.range.deleteContents();
       const node = document.createTextNode(finalText);
       target.range.insertNode(node);
+      editable.dispatchEvent(
+        new Event("input", {
+          bubbles: true,
+        }),
+      );
       const after = document.createRange();
       after.setStartAfter(node);
       after.collapse(true);
@@ -1296,6 +1301,11 @@ export default function Studio({
     if (isFinal) {
       const node = document.createTextNode(normalizedInterim);
       existingInterim.replaceWith(node);
+      editable.dispatchEvent(
+        new Event("input", {
+          bubbles: true,
+        }),
+      );
       interimNodeRef.current = null;
       after.setStartAfter(node);
     } else {
@@ -2004,7 +2014,6 @@ export default function Studio({
                   <div
                     ref={(el) => {
                       pageRefs.current[pageIndex] = el;
-                      if (el && el.innerHTML !== page) el.innerHTML = page;
                     }}
                     className="page-content"
                     contentEditable
